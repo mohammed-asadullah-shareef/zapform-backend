@@ -366,7 +366,7 @@ async def submit_form_html(
         """, status_code=500)
 
 # Mount static files (HTML, CSS, JS)
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
+# app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn
