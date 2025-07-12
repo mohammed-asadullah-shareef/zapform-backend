@@ -19,7 +19,8 @@ from datetime import datetime
 import os
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-BREVO_API_KEY = os.getenv("BREVO_API_KEY")
+BREVO_SMTP_LOGIN = os.getenv("BREVO_SMTP_LOGIN")
+BREVO_SMTP_PASSWORD = os.getenv("BREVO_SMTP_PASSWORD")
 BREVO_SENDER_EMAIL = os.getenv("BREVO_SENDER_EMAIL")
 BREVO_SMTP_SERVER = os.getenv("BREVO_SMTP_SERVER")
 BREVO_SMTP_PORT = os.getenv("BREVO_SMTP_PORT")
@@ -97,7 +98,8 @@ async def send_api_key_email(email: str, name: str, api_key: str):
         smtp_server = BREVO_SMTP_SERVER
         smtp_port = BREVO_SMTP_PORT
         sender_email = BREVO_SENDER_EMAIL
-        smtp_password = BREVO_API_KEY
+        smtp_username = BREVO_SMTP_LOGIN
+        smtp_password = BREVO_SMTP_PASSWORD
 
         
         if not all([sender_email, smtp_password]):
@@ -138,7 +140,7 @@ The ZapForm Team"""
             hostname=smtp_server,
             port=smtp_port,
             start_tls=True,
-            username=sender_email,
+            username=smtp_username,
             password=smtp_password,
         )
         
