@@ -129,6 +129,9 @@ The ZapForm Team"""
         
         message.attach(MIMEText(body, "plain"))
         
+        # Debug SMTP values
+        print("SMTP config:", smtp_server, smtp_port, sender_email, smtp_password)
+
         # Send email via Brevo SMTP
         await aiosmtplib.send(
             message,
